@@ -1,1 +1,3 @@
-# petStore
+# Pet store
+
+Prikaz klasicne prodavnice kucnih ljubimaca, info o prodavnici, ljubimci u ponudi, hrana i druge stvari njima potrebne...
