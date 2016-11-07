@@ -1,0 +1,595 @@
+/* def. reda, kolona i sirina istih */
+
+*{
+  box-sizing: border-box;
+}
+
+.section {
+	clear: both;
+	padding: 0px;
+	margin: 0px;
+}
+
+.col {
+	display: block;
+	float:left;
+	margin: 1% 0 1% 1.6%;
+}
+
+.col:first-child { margin-left: 0; }
+
+.group:before,
+.group:after { content:""; display:table; }
+.group:after { clear:both;}
+
+
+.span_12_of_12 { width: 100%;}
+.span_11_of_12 { width: 91.53%;}
+.span_10_of_12 { width: 83.06%;}
+.span_9_of_12 {	width: 74.6%;}
+.span_8_of_12 {	width: 66.13%;}
+.span_7_of_12 {	width: 57.66%;}
+.span_6_of_12 {	width: 49.2%;}
+.span_5_of_12 {	width: 40.73%;}
+.span_4_of_12 {	width: 32.26%;}
+.span_3_of_12 {	width: 23.8%;}
+.span_2_of_12 {	width: 15.33%;}
+.span_1_of_12 {	width: 6.866%;}
+
+
+/* izgled sajta */
+
+body{
+  background: #d5cea6; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, #d5cea6 0%, #c9c190 40%, #b7ad70 100%); /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, #d5cea6 0%,#c9c190 40%,#b7ad70 100%); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center, #d5cea6 0%,#c9c190 40%,#b7ad70 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+#zaglavlje{
+	background-color: white;
+	border: 1px solid gray;
+	overflow: hidden;
+	opacity: 0.9;
+}
+
+#logo{
+	height: 4em;
+	width: auto;
+	position: relative;
+	float: left;
+	padding-left: 1em;
+}
+
+h2{
+	float: left;
+  padding-left: 2em;
+  font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
+}
+
+#mojRacun{
+	float: right;
+}
+
+#myAccount{
+	cursor: pointer;
+	border: none;
+	height: 3em;
+	width: 3em;
+	float: right;
+	padding-top: 0.5em;
+	padding-right: 1em;
+
+  position: relative;
+  display: inline-block;
+}
+
+
+
+ul.myMenu li {
+  display: inline;
+  text-decoration: none;
+  font-family: Helvetica;
+  padding-right: 2em;
+  font-weight: bold;
+  font-size: 1.4em;
+  border-right: 1px solid gray;
+  padding-left: 0.2em;
+}
+
+ul.myMenu li a {
+ text-decoration: none;
+ color: black;
+ 
+}
+
+ul.myMenu li a:hover {
+  color: #d69753;
+  background-color: lightgray;
+  padding: 0.5em;
+}
+
+
+ul.myMenu li.hamburger {display: none; }
+
+@media screen and (max-device-width:768px) {
+  ul.myMenu li:not(:first-child) {display: none;}
+  ul.myMenu li.hamburger {
+    float: right;
+    display: inline-block;
+  }
+}
+
+
+@media screen and (max-device-width:768px) {
+  ul.myMenu.responsive {position: relative;}
+  ul.myMenu.responsive li.hamburger {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  
+  ul.myMenu.responsive li {
+    float: none;
+    display: inline;
+    font-size: 1.2em;
+    border-right: none;
+  }
+
+  ul.myMenu.responsive li a {
+    display: block;
+    text-align: left;
+    font-size: 1.2em;
+    border-right: none;
+
+  }
+
+  .dropdown-content{
+    min-width: 120px;
+  }
+
+  h2{
+  	font-size: 0.8em;
+  }
+
+  #logo{
+  	width: 1.8em;
+  	height: 1.8em;
+  	padding-left: 0.2em;
+  }
+
+  #myAccount{
+  	width: 2em;
+  	height: 2em;
+  }
+
+  .span_3_of_12{
+    width: 25%;
+  }
+
+  .span_3_of_12 img{
+    width: 80px;
+    height: 80px;
+  }
+
+  .span_6_of_12, .span_4_of_12, .span_5_of_12, .span_7_of_12{
+    width: 100%;
+  }
+
+  .span_8_of_12{
+    width: 50%;
+  }
+
+  #mojRacun{
+    width: 40%;
+  }
+
+  
+}
+
+
+@media screen and (max-width:768px) {
+  ul.myMenu li:not(:first-child) {display: none;}
+  ul.myMenu li.hamburger {
+    float: right;
+    display: inline-block;
+  }
+}
+
+
+@media screen and (max-width:768px) {
+  ul.myMenu.responsive {position: relative;}
+  ul.myMenu.responsive li.hamburger {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  
+  ul.myMenu.responsive li {
+    float: none;
+    display: inline;
+    font-size: 1.2em;
+    border-right: none;
+  }
+
+  ul.myMenu.responsive li a {
+    display: block;
+    text-align: left;
+    font-size: 1.2em;
+    border-right: none;
+
+  }
+
+  .dropdown-content{
+    min-width: 120px;
+  }
+
+  h2{
+    font-size: 0.8em;
+  }
+
+  #logo{
+    width: 1.8em;
+    height: 1.8em;
+  }
+
+  #myAccount{
+    width: 2em;
+    height: 2em;
+  }
+
+  .span_3_of_12{
+    width: 25%;
+  }
+
+  .span_3_of_12 img{
+    width: 100px;
+    height: 100px;
+  }
+
+  .span_6_of_12, .span_4_of_12, .span_5_of_12, .span_7_of_12{
+    width: 100%;
+  }
+
+  
+  .span_8_of_12{
+    width: 50%;
+  }
+
+  #mojRacun{
+    width: 40%;
+  }
+
+  
+}
+
+
+
+.navBar{
+	margin-top: 0.3em;
+	min-height: 3em;
+  background-color: white;
+  border: 1px solid gray;
+  opacity: 0.9;
+  max-height: 40em;
+}
+
+#pocetnaSlika
+{
+  margin-top: 0.3em;
+  border: 1px solid gray;
+}
+
+img
+{
+  width:100%;
+}
+
+
+
+
+.circleBorder {
+	width: 300px;
+	height: 300px;
+	background-color: white;
+	border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+
+}
+
+
+.okvirSlike {
+  width: 450px;
+  height: 320px;
+  background-color: white;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  cursor: pointer;
+  text-align: center;
+  margin-top: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+
+
+.container {
+  display:flex;
+  flex-wrap:wrap;
+  flex-direction:row;
+  justify-content:flex-start;
+}
+
+
+
+
+#podnozje{
+	background-color: white;
+	opacity: 0.9;
+	border: 1px solid gray;
+	margin-top: 2em;
+  position: relative;
+  float: left;
+}
+
+h5{
+	font-family: Helvetica;
+	padding-top: 0.1em;
+  padding-left: 3em;
+  float: left;
+}
+
+
+.dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  height: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  list-style-type: none;
+  text-align: left;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  list-style-type: none;
+
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+
+
+/* dio vezan za sign in */
+
+#unos, #poruka{
+  float: left;
+  position: relative;
+  margin-top: 3em;
+}
+
+
+#slikaLjubimci{
+  width: 90%;
+}
+
+#dobrodosli{
+  color: white;
+  padding-left: 2em;
+  margin-top: 2em;
+}
+
+form {
+  border: 1px solid #c6c7cc;
+  border-radius: 10px;
+  font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  max-width: 85%;
+  min-width: 280px;
+  height: auto; 
+  margin-top: 2.5em;
+  margin-left: 2em;
+  margin-right: auto;
+  display: block;
+  background-color: white;
+
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+input {
+
+  border-radius: 8px;
+  font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+.account-info {
+  padding: 40px 40px 0 40px;
+}
+.account-info label {
+  color: #395870;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.account-info input {
+  background: #fff;
+  border: 1px solid #c6c7cc;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1);
+  color: #636466;
+  padding: 6px;
+  margin-top: 6px;
+  width: 100%;
+}
+.account-action {
+  background: #f0f0f2;
+  border-top: 1px solid #c6c7cc;
+  border-radius: 8px;
+  padding: 25px;
+}
+.account-action .btn {
+  background: linear-gradient(#49708f, #293f50);
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  float: right;
+  padding: 10px 16px;
+}
+
+.account-action label {
+  color: #7c7c80;
+  font-size: 12px;
+  float: left;
+  margin: 10px 0 0 20px;
+}
+
+/* about us */
+
+p{
+  font-family: Helvetica;
+  font-size: 20px;
+  padding: 1em;
+  color: white;
+  text-align: justify;
+}
+
+p a{
+  color: white;
+}
+
+h1{
+  font-family: Helvetica;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-top: 2em;
+  color: white;
+}
+
+#slikaPetStore{
+  position: relative;
+  float: left;
+}
+
+#staNudimo{
+  position: relative;
+  float: left;
+}
+
+#slikaPS{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 1.5em;
+  border-radius: 2em;
+  max-width: 90%;
+}
+
+
+/* contact us */ 
+
+
+
+#formaKontakt {
+
+  margin-top: 5em;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  background: rgba(255,255,255,1);
+  background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,255,255,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(100%, rgba(237,237,237,1)));
+  position: relative;
+  width: 600px;
+  height: auto;
+  font-family: Helvetica;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid #999;
+  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+textarea#feedback {
+  width: 97%;
+  height: 130px;
+  display: block;
+  margin-bottom: 2em;
+  margin-left: 4px;
+  margin-right: 4px;
+  display: block;
+}
+
+
+h4{
+  font-family: Helvetica;
+  color: black;
+  font-size: 26px;
+  padding-left: 1em;
+  margin-bottom: -0.5em;
+}
+
+#slikaKontakt{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 3em;
+  width: 80%;
+}
+
+#slika{
+  position: relative;
+  float: left;
+}
+
+#forma{
+  position: relative;
+  float: left;
+}
+
