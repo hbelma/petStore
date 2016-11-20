@@ -1,109 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Sign In</title>
-	<link rel="stylesheet" type="text/css" href="mainPage.css">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-</head>
-<body>
-
-
-	<div class="span_12_of_12" id="zaglavlje">
-
-		<div class="span_1_of_12">
-			<img id="logo" src="http://www.louisandoliver.com/wp-content/uploads/2015/09/Swirl-Heart-and-Paw-Prints-Decal.png" alt="logo">
-		</div>
-
-		<div class="span_8_of_12" id="naslov">
-			<h2> EVERYTHING YOU NEED FOR YOUR DEAR PET </h2>
-		</div>
-
-		<div class="span_3_of_12" id="mojRacun">
-
-			<img id="myAccount" alt="accountIcon" src="http://www.iconsfind.com/wp-content/uploads/2015/11/20151116_564931bf2e56d.png" class="dropbtn" onclick="padajuciMeni()" >
-
-			<div class="dropdown">
-
-				<ul class="dropdown-content" id="myDropdown">
-					<li><a href="#">Log In</a></li>
-					<li><a href="register.html">Register</a></li>
-				</ul>
-
-				<script>
-
-					function padajuciMeni() {
-						document.getElementById("myDropdown").classList.toggle("show");
-					}
-
-				// Close the dropdown if the user clicks outside of it
-				window.onclick = function(e) {
-					if (!e.target.matches('.dropbtn')) {
-
-						var dropdowns = document.getElementsByClassName("dropdown-content");
-						for (var d = 0; d < dropdowns.length; d++) {
-							var openDropdown = dropdowns[d];
-							if (openDropdown.classList.contains('show')) {
-								openDropdown.classList.remove('show');
-							}
-						}
-					}
-				}
-			</script>
-		</div>
-
-
-	</div>
-
-</div>
-
-
-
-<!-- navBar -->
-
-<div class="span_12_of_12">
-
-	<div class="navBar">
-		
-		<ul class="myMenu" id="myNav">
-			<li><a href="mainPage.html">Home</a></li>
-			<li><a href="news.html">News</a></li>
-			<li><a href="#">Dogs</a></li>
-			<li><a href="#">Cats</a></li>
-			<li><a href="#">Small Animals</a></li>
-			<li><a href="aboutUs.html">About Us</a></li>
-			<li><a href="contactUs.html">Contact Us</a></li>
-			
-			<li class ="hamburger">
-				<a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
-
-				<script type="text/javascript">
-					function myFunction() {
-						var x = document.getElementById("myNav");
-
-						if (x.className === "myMenu") {
-							x.className += " responsive";
-						} else {
-							x.className = "myMenu";
-
-						}
-					}
-				</script>
-			</li>
-		</ul>
-
-	</div>
-
-</div>
-
-
+<div id="polje">
 
 <div class="span_12_of_12">
 
 	<div class="span_6_of_12" id="poruka">
 
-		<img id="slikaLjubimci" alt="pets" src="http://www.jackspets.com/Images/Pet-Care-Information/Pet-Care-Information.png">
+		<img id="slikaLjubimci" alt="pets" src="./Slike/pets.jpg">
 
 	</div>
 
@@ -115,14 +16,18 @@
 		<form>
 			<fieldset class="account-info">
 				<label> Username: 
-					<input type="text" name="username">
+					<input id="username" type="text" name="username" onchange="validirajUsernameLogIn()">
 				</label>
+				<label id="usernameLabela"></label>	
+
 				<label> Password: 
-					<input type="password" name="password">
+					<input id="password" type="password" name="password" onchange="validirajPasswordLogIn()" onmouseleave="validirajPasswordLogIn()">
 				</label>
+				<label id="passwordLabela"></label>	
+
 			</fieldset>
 			<fieldset class="account-action">
-				<input class="btn" type="submit" name="submit" value="Login">
+				<input class="btn" id="login" type="submit" name="submit" value="Login">
 				<label>
 					<input type="checkbox" name="remember"> Stay signed in
 				</label>
@@ -133,10 +38,4 @@
 
 </div>
 
-
-<div class="span_12_of_12" id="podnozje">
-	<h5> We are the best, visit us and see for yourself! </h5>
 </div>
-
-</body>
-</html>

@@ -1,100 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Pet Store - News</title>
-	<link rel="stylesheet" type="text/css" href="mainPage.css">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-</head>
-<body>
-
-	
-	<div class="span_12_of_12" id="zaglavlje">
-
-		<div class="span_1_of_12">
-			<img id="logo" src="http://www.louisandoliver.com/wp-content/uploads/2015/09/Swirl-Heart-and-Paw-Prints-Decal.png" alt="logo">
-		</div>
-
-		<div class="span_8_of_12" id="naslov">
-			<h2> EVERYTHING YOU NEED FOR YOUR DEAR PET </h2>
-		</div>
-
-		<div class="span_3_of_12" id="mojRacun">
-
-			<img id="myAccount" alt="accountIcon" src="http://www.iconsfind.com/wp-content/uploads/2015/11/20151116_564931bf2e56d.png" class="dropbtn" onclick="padajuciMeni()" >
-
-			<div class="dropdown">
-
-				<ul class="dropdown-content" id="myDropdown">
-					<li><a href="logIn.html">Log In</a></li>
-					<li><a href="register.html">Register</a></li>
-				</ul>
-
-				<script>
-
-					function padajuciMeni() {
-						document.getElementById("myDropdown").classList.toggle("show");
-					}
-
-				// Close the dropdown if the user clicks outside of it
-				window.onclick = function(e) {
-					if (!e.target.matches('.dropbtn')) {
-
-						var dropdowns = document.getElementsByClassName("dropdown-content");
-						for (var d = 0; d < dropdowns.length; d++) {
-							var openDropdown = dropdowns[d];
-							if (openDropdown.classList.contains('show')) {
-								openDropdown.classList.remove('show');
-							}
-						}
-					}
-				}
-			</script>
-		</div>
-
-
-	</div>
-
-</div>
-
-<!-- navBar vidljiv na svim stranicama -->
-
-<div class="span_12_of_12">
-
-	<div class="navBar">
-		
-		<ul class="myMenu" id="myNav">
-			<li><a href="mainPage.html">Home</a></li>
-			<li><a href="#">News</a></li>
-			<li><a href="#">Dogs</a></li>
-			<li><a href="#">Cats</a></li>
-			<li><a href="#">Small Animals</a></li>
-			<li><a href="aboutUs.html">About Us</a></li>
-			<li><a href="contactUs.html">Contact Us</a></li>
-			
-			<li class ="hamburger">
-				<a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
-
-				<script type="text/javascript">
-					function myFunction() {
-						var x = document.getElementById("myNav");
-
-						if (x.className === "myMenu") {
-							x.className += " responsive";
-						} else {
-							x.className = "myMenu";
-
-						}
-					}
-				</script>
-			</li>
-		</ul>
-
-	</div>
-
-</div>
-
+<div id="polje">
 
 <!-- redovi kolone slicice -->
 
@@ -104,18 +8,23 @@
 
 		<div class="span_4_of_12">
 
-			<img class="okvirSlike" alt="dog" src="http://www.gooddogfoodstore.com/wp-content/uploads/2012/04/dog-with-good-dog-food.jpg">
+			<img class="okvirSlike" alt="dog" src="./Slike/newsSlika1.jpg"
+			 onclick="showImage(this.src, './Slike/newsSlika1.jpg');">
 			<p> There are 5 new products for dogs! Check it out in <a href="#"> dogs </a> section. </p>
 
 		</div>
 
 		<div class="span_4_of_12">
-			<img class="okvirSlike" alt="petStoreInterior" src="https://s-media-cache-ak0.pinimg.com/564x/1b/1a/e7/1b1ae7ab90468862df73a7c6bb48338a.jpg">
+			<img class="okvirSlike" alt="petStoreInterior" src="./Slike/newsSlika2.jpg"
+						 onclick="showImage(this.src, './Slike/newsSlika2.jpg');">
+
 			<p> Our store got even bigger. Want to know if we offer your dog's favourite treat? Come to find out or <a href="contactUs.html"> contact us </a> . </p>
 		</div>
 
 		<div class="span_4_of_12">
-			<img class="okvirSlike" alt="aquarium" src="http://www.pets4homes.co.uk/images/articles/2839/why-is-my-goldfish-bullying-his-tank-mates-554a1b7b8f97b.jpg">
+			<img class="okvirSlike" alt="aquarium" src="./Slike/newsSlika3.jpg"
+						 onclick="showImage(this.src, './Slike/newsSlika3.jpg');">
+
 			<p> Aquarium is here! Yaay. Come and get yourself a goldfish to grant your every wish! ;) </p>
 		</div>
 
@@ -123,34 +32,37 @@
 
 </div>
 
+  <div id="largeImgPanel" onkeypress="" ="this.style.display='none'">
+            <img id="largeImg"
+                 style="height:100%; margin:0; padding:0;" />
+   </div>
+
 <div class="span_12_of_12">
 
 	<div class="container">
 
 		<div class="span_4_of_12">
 
-			<img class="okvirSlike" alt="maca" src="http://i.ebayimg.com/00/s/NTc0WDgzNw==/z/bocAAOSwPe1T81q9/$_32.JPG?set_id=880000500F">
+			<img class="okvirSlike" alt="maca" src="./Slike/newsSlika4.jpg"
+						 onclick="showImage(this.src, './Slike/newsSlika4.jpg');">
+
 			<p> Comfy bed and toys for cats. Check it out <a href="#"> here </a> . </p>
 
 		</div>
 
 		<div class="span_4_of_12">
-			<img class="okvirSlike" alt="birdcage" src="http://www.allbirdcage.com/wp-content/uploads/2015/12/bird-cages-for-canaries.jpg">
+			<img class="okvirSlike" alt="birdcage" src="./Slike/newsSlika5.jpg" 
+						 onclick="showImage(this.src, './Slike/newsSlika5.jpg');">
 			<p> This just got in! Special birdcage for only 19,99$ -  <a href="#"> here. </a> . </p>
 		</div>
 
 		<div class="span_4_of_12">
-			<img class="okvirSlike" alt="hamster" src="https://i.ytimg.com/vi/h1-KY8XubMA/maxresdefault.jpg">
+			<img class="okvirSlike" alt="hamster" src="./Slike/newsSlika6.jpg"
+						 onclick="showImage(this.src, './Slike/newsSlika6.jpg');">
 			<p> Cute little hamsters. "Oh, just look at me" </p>
 		</div>
 
 	</div>
-
 </div>
 
-<div class="span_12_of_12" id="podnozje">
-	<h5> We are the best, visit us and see for yourself! </h5>
 </div>
-
-</body>
-</html>
