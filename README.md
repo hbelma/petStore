@@ -30,7 +30,7 @@ aboutUs - html stranice koja opisuje Pet Store
 
 contactUs -html stranice u kojoj se nalazi forma za kontakt tj. davanje feedbacka
 
-logIn - html stranice gdje se nalazi forma za login
+#logIn - html stranice gdje se nalazi forma za login
 
 mainPage (.html) - html pocetne stranice 
 
@@ -52,6 +52,7 @@ ekrana a na escape vrati pogled nazad na galeriju. U ovom slucaju galerija se na
 Takodjer, uradjen je i Ajax tako da se podstranice ucitavaju bez reloada-a cijele stranice.
 
 ## II - Šta nije urađeno?
+
 
 -
 
@@ -82,6 +83,29 @@ petStore (.js) - javascript file u kojem se nalaze funkcije za prikaz slika i fu
 register - html gdje se nalazi forma za registraciju
 
 
+# Spirala 3
 
+## I - Šta je urađeno?
 
+1 - Urađena je serijalizacija svih podataka u XML fajl/fajlove. Za registraciju korisnika XML fajlovi se nalaze u folderu 'users', a za davanje feedbacka postoji istoimeni fajl 'feedback.xml'... xml fajl 'testbelma.xml' se nalazi u folderu 'admin'. Username za admina je testbelma, a password je 'belma123'. 
+Admin može da dodaje produkte za pse pomoću dogsAdmin.php do koje se dodje klikom na 'Dogs'. Unosi se ID, Opis, Cijena i url slike proizvoda i spremaju se u xml fajl 'productsForDogs.xml'. Slika je trebala da se prikazuje nakon sto se doda proizvod, medjutim to nisam stigla napraviti pa se zasad prikazuju samo navedeni podaci: Opis, cijena i url slike. 
+Adminu je omogućeno da dodaje i briše produkte. 
 
+2 i 3 - Adminu je omogućen download podataka u obliku csv fajla. Ukoliko se logujete kao admin, na svakoj podstranici kao elementi menija se nalaze: 'Korisnici -CSV i Korisnici - PDF. Klikom na prvo se download-uje csv fajl 'Users.csv', a klikom na 'Korisnici - PDF' se otvori PDF sa listom korisnika.
+Rađeno je pomoću fpdf biblioteke i podaci se čitaju iz XML-a, nisu hardkodirani.
+
+4 - U meniju ima element 'Search' koji vodi na search.php gdje se radi pretraga. Pretražuje se iz XML-a feedback.xml na principu pretrage subject-a. Dok nisam uvela neke izmjene prikazivalo je više elemenata pretrage, sada samo jedan, nisam stigla da ispravim :( 
+
+## II - Šta nije urađeno? 
+
+deployment na OpenShift za dodatni bod
+
+## III, IV - Bug-ovi
+
+Pretraga ne radi kako sam zamislila, prikazuje samo jedan element. Ispravit ce se za iducu spiralu, nisam stigla sada :/ 
+
+## V - Lista fajlova u formatu NAZIVFAJLA - Opis u vidu jedne rečenice šta se u fajlu nalazi
+
+Svi html fajlovi koji su postojali su sada php fajlovi. Za većinu je već rečeno za šta služe prije, novi su aboutUsAdmin.php, contactUsAdmin.php, dogsAdmin.php, FPDFDownload.php, indexAdmin.php, logout.php, newsAdmin.php, pretraga.php, pretrazi1.php, searchUsers.php i već pomenuti fajlovi feedback.xml, Users.csv , productForDogs.xml i xml fajlovi za korisnike.
+Php fajlovi sa dodatkom admin, kod sebe imaju mogućnost download-a CSV fajla i mogućnost logout-a admina što se radi u logout.php.
+Mislim da je ostalo već opisano.
