@@ -100,7 +100,7 @@ function validirajFeedback() {
 
     x = document.getElementById("feedback").value;
 
-    if (x.length < 10) {
+    if (x.length < 5) {
         text = "Write at least one sentence!";
         nijeValidno = true;
     } else {
@@ -118,7 +118,7 @@ function validationCheckContact(){
 
     if(nijeValidno || document.getElementById("subject").value.length == 0
         || document.getElementById("name").value.length == 0 || document.getElementById("email").value.length == 0
-        || document.getElementById("feedback").value.length < 10)
+        || document.getElementById("feedback").value.length < 5)
            document.getElementById("feedbackSend").disabled = "disabled";
 
     else
@@ -127,6 +127,37 @@ function validationCheckContact(){
 }
 
 
+function validirajOpis() {
+    var x, text;
+
+    x = document.getElementById("opis").value;
+
+    if (x.length < 7) {
+        text = "Write at least one sentence!";
+        nijeValidno = true;
+    } else {
+        text = "";
+        nijeValidno = false;
+    }
+
+    document.getElementById("opisLabela").innerHTML = text;
+     validationCheckAdd();
+
+}
+
+
+function validationCheckAdd(){
+
+    if(nijeValidno  || document.getElementById("opis").value.length <  7)
+           document.getElementById("addProduct").disabled = "disabled";
+
+    else
+         document.getElementById("addProduct").disabled = "";
+
+}
+
+
+/*
 
 function validirajPasswordLogIn(){
 
@@ -182,6 +213,9 @@ function validirajUsernameLogIn() {
 
 
 
+
+
+
 function validationCheckLogIn(){
 
     if(nijeValidno || document.getElementById("username").value.length == 0  || document.getElementById("password").value.length == 0)
@@ -191,6 +225,29 @@ function validationCheckLogIn(){
          document.getElementById("login").disabled = "";
 
 }
+
+*/
+
+
+function validirajUsername() {
+    var x, text;
+
+    x = document.getElementById("username").value;
+
+    if (x.length < 8) {
+        text = "Username too short!";
+                nijeValidno = true;
+
+    } else {
+        text = "";
+                nijeValidno = false;
+
+    }
+    document.getElementById("usernameLabela").innerHTML = text;
+      validationCheck();
+
+}
+
 
 function onLoad(){
 
@@ -324,10 +381,32 @@ function validationCheck(){
 
     if(nijeValidno || document.getElementById("ime").value.length == 0
         || document.getElementById("prezime").value.length == 0 || document.getElementById("password").value.length == 0
-        || document.getElementById("email").value.length == 0 || document.getElementById("confirmPass").value.length == 0)
+        || document.getElementById("email").value.length == 0 || document.getElementById("confirmPass").value.length == 0
+|| document.getElementById("username").value.length == 0
+        )
            document.getElementById("register").disabled = "disabled";
 
     else
          document.getElementById("register").disabled = "";
 
 }
+
+
+function searchkey(){
+  var searchTxt=$("input[name='search']").val();
+  $.post("pretraga.php",{searchVal: searchTxt},function(output){
+    $("#output").html(output);
+  });
+}
+
+
+function prikaziSve(){
+    var searchTxt = $("input[name='search']").val();
+  $.post("pretrazi1.php",{searchVal: searchTxt},function(output){
+    $("#output").html(output);
+  }
+  );
+  }
+
+
+  
