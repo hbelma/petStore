@@ -2,33 +2,33 @@
 
 session_start();
 if(!file_exists('admin/'.$_SESSION['username'].'.xml')){
-header('Location: login.php');
-die;
+	header('Location: login.php');
+	die;
 }
 
 ?>
 
-
 <?php 
 
 if(isset($_GET['staviUCSV'])){
-  $fp = fopen('Users.csv', 'w');
-  $files=glob('users/*.xml');
-  var_dump($files);
-  foreach($files as $file){
-    $xml=new SimpleXMLElement($file,0,true);
-    $filer =array($xml->user->firstName,$xml->user->lastName);
-      fputcsv($fp, $filer);
-  }
-    fclose($fp);
+	$fp = fopen('Users.csv', 'w');
+	$files=glob('users/*.xml');
+	var_dump($files);
+	foreach($files as $file){
+		$xml=new SimpleXMLElement($file,0,true);
+		$filer =array($xml->user->firstName,$xml->user->lastName);
+		fputcsv($fp, $filer);
+	}
+	fclose($fp);
     $url = 'http://' . $_SERVER['HTTP_HOST'];            // Get the server
     $url .= rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); // Get the current directory
     $url .= '/Users.csv';            // <-- Your relative path
     header('Location: ' . $url, true, 302); 
     die();
-  }
+}
 
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -37,61 +37,37 @@ if(isset($_GET['staviUCSV'])){
 	<link rel="stylesheet" type="text/css" href="mainPage.css">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 	<script type="text/javascript" src="petStore.js"></script>
 
 </head>
 
 <body>
 
-<?php	
-   if(isset($_GET['action']))
-{
-	$products =simplexml_load_file('productsForDogs.xml');
-	
-	$id =$_GET['id'];
-	$index=0;
-	$i=0;
-	foreach($products->product as $product){
-		if($product['id'] == $id){
-			$index = $i;
-			break;
-		}
-		$i++;
-	}
-    unset($products->product[$index]);
-    file_put_contents(('productsForDogs.xml'),$products->asXML());
-}
-$products =simplexml_load_file('productsForDogs.xml');
-	$errorCijena = false;
-	$pronadjen = false;
 
+	<?php	
 
 	if(isset($_REQUEST['addProduct'])){
+
+		$opis = $_REQUEST['opis'];
+		$cijena = $_REQUEST['cijena'];
+		$slika = $_REQUEST['nazivPic'];
+
+		$dbh= new PDO("mysql:dbname=petstore;host=localhost;charset=utf8", "testbelma", "belma123");
+
+		$stmt1 = $dbh->prepare("INSERT INTO produkti (opis, cijena, slika) VALUES (:opis, :cijena, :slika)");
+
+		$stmt1->bindParam(':opis', $opis1);
+		$stmt1->bindParam(':cijena', $cijena1);
+		$stmt1->bindParam(':slika', $slika1);
 	
-        $files = glob('uploads/*.{jpg,png,gif}', GLOB_BRACE);
-        foreach($files as $file) {
-           if(strcmp('uploads/'.$_POST['slika'],$file)==0) {$pronadjen = true; break;}
-	     }
-	    
-	    if(!$pronadjen && empty($_POST['urlPic'])) $errorNazivSlike = true;
+		$opis1 = $opis;
+		$cijena1 = $cijena;
+		$slika1 = $slika;
+	
+		$stmt1->execute();
 
-	    if(!preg_match("/(0|[1-9][0-9]*)/", $_POST['cijena'])) $errorCijena = true;
-	    		
-		else{
-	$products=simplexml_load_file('productsForDogs.xml');
-	$product=$products->addChild('product');
-	$product->addAttribute('id',$_POST['id']);
-	$product->addChild('opis',$_POST['opis']);
-	//$product->addChild('slika','uploads/'.$_POST['fileToUpload']);
-		$product->addChild('urlSlike',$_POST['urlPic']);
-
-	$product->addChild('cijena',$_POST['cijena']);
-	file_put_contents('productsForDogs.xml', $products->asXML());
-		}
 	}
-
-?>
+	?>
 
 
 
@@ -159,13 +135,11 @@ $products =simplexml_load_file('productsForDogs.xml');
 			<li><a href="#">Small Animals</a></li> 
 
 			<li><a href="aboutUsAdmin.php">About Us</a></li>
-			<li><a href="contactUsAdmin.php">Contact Us</a></li>
-			<li><a href="searchUsers.php">Search</a></li>
+			<li><a href="izXMLuBazu.php"> XML -> baza</a></li>
 
-
-				<li><a href="indexAdmin.php?staviUCSV=true">Korisnici-CSV</a></li>
+			<li><a href="indexAdmin.php?staviUCSV=true">Korisnici-CSV</a></li>
 			<li><a href="FPDFDownload.php">Korisnici-PDF</a></li>
-		
+
 			
 			<li class ="hamburger">
 				<a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
@@ -200,10 +174,6 @@ $products =simplexml_load_file('productsForDogs.xml');
 			<div>
 				<fieldset class="account-info">
 
-					<label> ID: 
-						<input id="id" type="text" name="id" />
-					</label>
-
 					<label> Description: 
 						<input id="opis" type="text" name="opis" onchange="validirajOpis()" />
 					</label>
@@ -213,15 +183,14 @@ $products =simplexml_load_file('productsForDogs.xml');
 					</label>
 
 					<label id="opisLabela"></label>
-
-				<label> Paste picture url:
-					
-					<input type="text" name="urlPic"/>
-
-				</label>
+					<a id ="ucitaj" href='skiniSliku.html'> Učitaj svoju sliku ovdje</a>
 
 
-					<label id="slikaLabela"></label>
+					<label> Type the name of your picture:
+
+						<input type="text" name="nazivPic"/>
+
+					</label>
 
 				</fieldset>
 
@@ -235,22 +204,7 @@ $products =simplexml_load_file('productsForDogs.xml');
 
 	</div>
 
-	<div class="span_8_of_12" id="slikeDodaj">
 
-		
-			<?php
-			$xml = simplexml_load_file('productsForDogs.xml');
-			foreach ($xml->product as $produkt) {
-
-				echo "<div class='span_8_of_12'";
-				echo '<p> Opis produkta:'.$produkt->opis.'<br> Url slike: '.$produkt->urlSlike.'<br> Cijena: '.$produkt->cijena.'</p>';
-?>			   <a href="dogsAdmin.php?action=delete&id=<?php echo $product['id'];?>"
-				 onclick="return confirm('Are you sure?')">Delete</a></td>
-				<?php echo '</div>';	
-			}                
-			?>
-		
-	</div>
 
 </div>
 

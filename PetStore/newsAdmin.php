@@ -98,10 +98,7 @@ if(isset($_GET['staviUCSV'])){
 			<li><a href="#">Small Animals</a></li> 
 
 			<li><a href="aboutUsAdmin.php">About Us</a></li>
-			<li><a href="contactUsAdmin.php">Contact Us</a></li>
-
-						<li><a href="searchUsers.php">Search</a></li>
-
+			<li><a href="izXMLuBazu.php"> XML -> baza</a></li>
 
 				<li><a href="indexAdmin.php?staviUCSV=true">Korisnici-CSV</a></li>
 			<li><a href="FPDFDownload.php">Korisnici-PDF</a></li>

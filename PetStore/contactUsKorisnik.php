@@ -29,8 +29,7 @@
 			<div class="dropdown">
 
 				<ul class="dropdown-content" id="myDropdown">
-					<li><a href="login.php">Log In</a></li>
-					<li><a href="register.php">Register</a></li>
+					<li><a href="logout.php">Log out</a></li>
 				</ul>
 
 				<script>
@@ -67,17 +66,16 @@
 	<div class="navBar">
 		
 		<ul class="myMenu" id="myNav">
-			<li><a href="index.php">Home</a></li>
-			<li><a href="news.php">News</a></li>
+			<li><a href="indexKorisnik.php">Home</a></li>
+			<li><a href="newsKorisnik.php">News</a></li>
 
 	
-			<li><a href="dogs.php">Dogs</a></li>
+			<li><a href="dogsKorisnik.php">Dogs</a></li>
 			<li><a href="#">Cats</a></li>
 			<li><a href="#">Small Animals</a></li> 
 
-			<li><a href="aboutUs.php">About Us</a></li>
-			<li><a href="contactUs.php">Contact Us</a></li>
-						<li><a href="searchUsers.php">Search</a></li>
+			<li><a href="aboutUsKorisnik.php">About Us</a></li>
+			<li><a href="#">Contact Us</a></li>
 
 			
 			<li class ="hamburger">
@@ -117,7 +115,15 @@
 <?php
 	$posted = false;
 
+	//bicemo malo duduci i pretpostavit da ce korisnik unijeti svoj username
+		//provjera ako se stigne
+		
+
 	if(isset($_REQUEST['submit'])){
+
+
+/*
+
    if (file_exists("feedback.xml"))
    {
     $xml=simplexml_load_file("feedback.xml");
@@ -129,7 +135,7 @@
     $comment= $xml->addChild('comment');
     $comment->addChild('ID', $broj."");
 
-    $comment->addChild('name', $_POST['name']);
+    $comment->addChild('username', $_POST['username']);
     $comment->addChild('email', $_POST['email']);
     $comment->addChild('subject', $_POST['subject']);
     $comment->addChild('message', $_POST['feedback']);
@@ -143,14 +149,40 @@ $xml->addAttribute('version', '1.0');
     $comment= $xml->addChild('comment');
     $comment->addChild('ID', '1');
 
-    $comment->addChild('name', $_POST['name']);
+    $comment->addChild('username', $_POST['username']);
     $comment->addChild('email', $_POST['email']);
     $comment->addChild('subject', $_POST['subject']);
     $comment->addChild('message', $_POST['feedback']);
     $result= $xml->asXML("feedback.xml");
     $posted = true;
    }
- }
+
+   */
+
+
+
+	$username= $_REQUEST['username'];
+	$email = $_REQUEST['email'];
+	$subject = $_REQUEST['subject'];
+	$message = $_REQUEST['feedback'];
+
+	$dbh = new PDO("mysql:dbname=petstore;host=localhost;charset=utf8", "testbelma", "belma123");
+
+	$stmt1 = $dbh->prepare("INSERT INTO kontaktinfo(username, email, subject,message) VALUES (:username, :email, :subject, :message)");
+
+	$stmt1->bindParam(':username', $username1);
+	$stmt1->bindParam(':email', $email1);
+	$stmt1->bindParam(':subject', $subject1);
+	$stmt1->bindParam(':message', $message1);
+
+  // insert one row
+	$username1 = $username;
+	$email1 = $email;
+	$subject1 = $subject;
+	$message1 = $message;
+
+
+	$stmt1->execute();}
 
 
  ?>
@@ -162,19 +194,18 @@ $xml->addAttribute('version', '1.0');
 				<h4>Contact : </h4>
 
 				<fieldset class="account-info">
-					<label> Full Name: 
-						<input id="name" type="text" name="name" onchange="validirajPunoIme()" />
+
+				<label> Username:
+						<input id="username" type="text" name="username" onchange="validirajUsername()" />
 					</label>
 
-					<label id="fullLabel"></label>
+					<label id="emailLabela"></label>
 
 					<label> Email Address:
 						<input id="email" type="text" name="email" onchange="validirajEmail()" />
 					</label>
 
 					<label id="emailLabela"></label>
-
-
 
 					<label> Subject:
 						<input id="subject" type="text" name="subject" onchange="validirajSubject()" />

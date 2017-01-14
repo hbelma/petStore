@@ -1,36 +1,3 @@
-<?php
-
-session_start();
-if(!file_exists('admin/'.$_SESSION['username'].'.xml')){
-header('Location: login.php');
-die;
-}
-
-?>
-
-
-<?php 
-
-if(isset($_GET['staviUCSV'])){
-  $fp = fopen('Users.csv', 'w');
-  $files=glob('users/*.xml');
-  var_dump($files);
-  foreach($files as $file){
-    $xml=new SimpleXMLElement($file,0,true);
-    $filer =array($xml->user->firstName,$xml->user->lastName);
-      fputcsv($fp, $filer);
-  }
-    fclose($fp);
-    //header("Location: http://localhost:50/spiralatri/LoginPodaci.csv");
-    $url = 'http://' . $_SERVER['HTTP_HOST'];            // Get the server
-    $url .= rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); // Get the current directory
-    $url .= '/Users.csv';            // <-- Your relative path
-    header('Location: ' . $url, true, 302); 
-    die();
-  }
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,7 +55,6 @@ if(isset($_GET['staviUCSV'])){
 		</div>
 
 
-
 	</div>
 
 </div>
@@ -101,20 +67,16 @@ if(isset($_GET['staviUCSV'])){
 		
 		<ul class="myMenu" id="myNav">
 			<li><a href="#">Home</a></li>
-			<li><a href="newsAdmin.php">News</a></li>
+			<li><a href="newsKorisnik.php">News</a></li>
 
 	
-			<li><a href="dogsAdmin.php">Dogs</a></li>
+			<li><a href="dogsKorisnik.php">Dogs</a></li>
 			<li><a href="#">Cats</a></li>
 			<li><a href="#">Small Animals</a></li> 
 
-			<li><a href="aboutUsAdmin.php">About Us</a></li>
-			<li><a href="izXMLuBazu.php"> XML -> baza</a></li>
+			<li><a href="aboutUsKorisnik.php">About Us</a></li>
+			<li><a href="contactUsKorisnik.php">Contact Us</a></li>
 
-
-			<li><a href="indexAdmin.php?staviUCSV=true">Korisnici-CSV</a></li>
-			<li><a href="FPDFDownload.php">Korisnici-PDF</a></li>
-			
 			<li class ="hamburger">
 				<a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
 

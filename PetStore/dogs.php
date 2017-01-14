@@ -76,7 +76,6 @@
 			<li><a href="#">Small Animals</a></li> 
 
 			<li><a href="aboutUs.php">About Us</a></li>
-			<li><a href="contactUs.php">Contact Us</a></li>
 						<li><a href="searchUsers.php">Search</a></li>
 
 			

@@ -12,16 +12,18 @@
 
 <body>
 
-	<?php 
+	<?php /*
 
 	$error = false;
 
 	if(isset($_POST['submit'])){
-		$username = preg_replace('/[^A-Za-z]/', '' , $_POST['username'] );
-		$password = md5($_POST['password']);
+		$username = preg_replace('/[^A-Za-z0-9]/', '' , $_POST['username'] );
+
 
 		if(file_exists('admin/' . $username . '.xml')){
 			$xml = new SimpleXMLElement('admin/' . $username . '.xml', 0, true);
+					$password = md5($_POST['password']);
+
 		if($password == $xml->password){
 				session_start();
 				$_SESSION['username'] = $username;
@@ -29,9 +31,73 @@
 				die;
 		   }
 		}
+
+		elseif(file_exists('users/' . $username . '.xml')){
+			$xml = new SimpleXMLElement('users/' . $username . '.xml', 0, true);
+					$password2 = $_POST['password'];
+
+		if($password2 == $xml->user->password){
+				session_start();
+				$_SESSION['username'] = $username;
+				header('Location: indexKorisnik.php');
+				die;
+		   }
+		}
 	
 
 	$error = true;
+
+	*/
+
+
+	$error = false;
+  if(isset($_POST['submit'])){
+
+   $username = $_POST['username'];
+   $password = $_POST['password'];
+
+
+   if($username != "testbelma") {
+
+
+    $dbh= new PDO("mysql:dbname=petstore;host=localhost;charset=utf8", "testbelma", "belma123");
+
+    $upit = $dbh->prepare("SELECT password FROM podaciologovanim WHERE username=?");
+
+    $upit->bindValue(1, $username, PDO::PARAM_STR);
+    $upit->execute();
+
+    foreach ($upit->fetch() as $row) {
+
+      if($password==$row){
+
+        session_start();
+        $_SESSION['username']= $username;
+        header('Location:indexKorisnik.php');
+        die;
+      }
+
+  }
+
+}
+
+
+elseif ($username == "testbelma" && $password == "belma123") {
+
+	   session_start();
+        $_SESSION['username']= $username;
+        header('Location:indexAdmin.php');
+        die;
+
+
+
+}
+
+    
+ 
+  $error=true;
+
+
 }
     ?>
 
@@ -103,7 +169,6 @@
 			<li><a href="smallAnimals.php">Small Animals</a></li> 
 
 			<li><a href="aboutUs.php">About Us</a></li>
-			<li><a href="contactUs.php">Contact Us</a></li>
 			
 			<li class ="hamburger">
 				<a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>

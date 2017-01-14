@@ -111,7 +111,6 @@ $output="";
 			<li><a href="#">Small Animals</a></li> 
 
 			<li><a href="aboutUs.php">About Us</a></li>
-			<li><a href="contactUs.php">Contact Us</a></li>
 
 			<li class ="hamburger">
 				<a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>

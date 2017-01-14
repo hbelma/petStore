@@ -102,8 +102,9 @@ if(isset($_GET['staviUCSV'])){
 			<li><a href="#">Small Animals</a></li> 
 
 			<li><a href="#">About Us</a></li>
-			<li><a href="contactUsAdmin">Contact Us</a></li>
-						<li><a href="searchUsers.php">Search</a></li>
+
+			<li><a href="izXMLuBazu.php"> XML -> baza</a></li>
+
 
 
 
