@@ -109,3 +109,12 @@ Pretraga ne radi kako sam zamislila, prikazuje samo jedan element. Ispravit ce s
 Svi html fajlovi koji su postojali su sada php fajlovi. Za većinu je već rečeno za šta služe prije, novi su aboutUsAdmin.php, contactUsAdmin.php, dogsAdmin.php, FPDFDownload.php, indexAdmin.php, logout.php, newsAdmin.php, pretraga.php, pretrazi1.php, searchUsers.php i već pomenuti fajlovi feedback.xml, Users.csv , productForDogs.xml i xml fajlovi za korisnike.
 Php fajlovi sa dodatkom admin, kod sebe imaju mogućnost download-a CSV fajla i mogućnost logout-a admina što se radi u logout.php.
 Mislim da je ostalo već opisano.
+
+
+# Spirala 4
+
+## I - Šta je urađeno?
+
+link:
+
+http://petstoregit-pet-store.44fs.preview.openshiftapps.com/
