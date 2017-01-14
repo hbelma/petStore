@@ -64,7 +64,14 @@
  $username = $_REQUEST['username'];
   $password = $_REQUEST['password'];
 
-  $dbh= new PDO("mysql:dbname=petstore;host=localhost;charset=utf8", "testbelma", "belma123");
+
+$db_server= getenv('MYSQL_SERVICE_HOST');
+$db_username=getenv('MYSQL_USER');
+$db_pw = getenv('MYSQL_PASSWORD');
+$db = getenv('MYSQL_DATABASE');
+
+
+	$dbh = new PDO("mysql:dbname=".$db.";host=".$db_server, $db_username, $db_pw);
 
    $stmt1 = $dbh->prepare("INSERT INTO registrovanikorisnici (ime, prezime, email, username, password) VALUES (:ime, :prezime, :email, :username, :password)");
 
